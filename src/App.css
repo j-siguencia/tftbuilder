@@ -1,26 +1,59 @@
-.main {
+/* Layout container using flexbox */
+.layout {
   display: flex;
-  flex-direction: column; /* stack rows vertically */
-  align-items: center;
-  --s: 80px; /* size of hex */
-  --m: 2px; /* margin */
+  justify-content: space-between; /* This ensures the hex board is on the left and accordion on the right */
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 0;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
+/* Hexagonal grid styling */
+.hex-board {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: lightgray;
+  min-height: 400px;
+  width: 30%;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Hexagonal container layout */
 .container {
-  font-size: 0;
-  margin-bottom: 0; /* vertical spacing between rows */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7px;
+}
+:root {
+  --s: 80px;
+  --m: 6px;
 }
 
 .container div {
   width: var(--s);
   margin: var(--m);
-  height: calc(var(--s) * 1);
+  height: calc(var(--s) * 1.1547);
   display: inline-block;
   font-size: initial;
-  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+  clip-path: polygon(
+    0% 25%,
+    0% 75%,
+    50% 100%,
+    100% 75%,
+    100% 25%,
+    50% 0%
+  ); /* Hexagon shape */
   background-color: teal;
 }
 
-.offset {
-  margin-left: calc(var(--s) / 2 + var(--m));
+/* Accordion section styling */
+.accordion-wrapper {
+  max-width: 300px;
+  flex-shrink: 0;
 }
